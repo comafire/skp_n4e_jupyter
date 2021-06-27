@@ -1,0 +1,62 @@
+# BASE (주의: 환경 변수의 기준 값으로 변수 값 내에 다른 환경 변수를 참조하면 안됨)
+export SKP_USER="skp"
+export SKP_USERID=$(id -u $SKP_USER)
+export SKP_USER_HOME="/home/skp"
+export SKP_HOME="/home/skp/skp"
+
+# LOCALE
+export LOCALE="ko_KR.UTF-8" # or "en_US.UTF-8"
+
+# PYTHON
+export PYENV_PYVER="3.8.9"
+export PYENV_VENV="skp-n4e-jupyter"
+export PATH="$HOME/.pyenv/bin:${PATH}"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+pyenv activate ${PYENV_VENV} 
+
+# NODEJS - N
+export N_PREFIX="${SKP_USER_HOME}/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+# JUPYTER
+export JUPYTER_HOME="${SKP_HOME}/skp_n4e_jupyter"
+export JUPYTER_NAME="skp-n4e-jupyter"
+export JUPYTER_PORT="5020" # Your Jupyter Port
+export JUPYTER_GPU="FALSE" # TRUE or FALSE
+export JUPYTER_BASEURL="jupyter" # Your Jupyter BaseURL, ex) http://localhost:8010/jupyter
+export JUPYTER_ROOTDIR="${SKP_HOME}/skp_n4e_jupyter_data"
+# # HTTPS 적용은 Traefik 에서 진행되므로 자체 SSL 적용은 사용하지 않음
+# export JUPYTER_DNS="${LETSENCRYPT_DNS}"
+# export JUPYTER_CERT="${LETSENCRYPT_HOME}/var/${JUPYTER_DNS}/cert.pem"
+# export JUPYTER_CERT_KEY="${LETSENCRYPT_HOME}/var/${JUPYTER_DNS}/privkey.pem"
+
+# JAVA
+export JAVA_VER="openjdk-8-jdk"
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64" # ubuntu
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home" # macOS
+# export JAVA_VER="adoptopenjdk8"
+export PATH="${JAVA_HOME}/bin:${PATH}"
+export CPPFLAGS="-I${JAVA_HOME}/include"
+
+# SCALA
+export SCALA_VER="2.12.10"
+export SCALA_HOME="${JUPYTER_HOME}/usr/scala-${SCALA_VER}"
+export PATH="${SCALA_HOME}/bin:${PATH}"
+
+# JULIA
+export JULIA_VER="1.6.1"
+export JULIA_HOME="${JUPYTER_HOME}/usr/julia-${JULIA_VER}"
+export PATH="${JULIA_HOME}/bin:${PATH}"
+
+# SPARK 
+export SPARK_VER="3.1.2"
+
+# R
+export R_LIBS="${JUPYTER_HOME}/usr/Rlib"
+export R_LIBS_USER="${R_LIBS}"
+
+# SECRET
+. ./.secret
+

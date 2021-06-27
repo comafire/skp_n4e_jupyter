@@ -1,0 +1,8 @@
+{
+  "apps" : [{
+    "script" : "jupyter lab --config ${JUPYTER_HOME}/etc/jupyter_lab_config.py",
+    "name" : "${JUPYTER_NAME}",
+    "args" : "",
+    "restart_delay" : 3000
+  }]
+}

@@ -1,0 +1,35 @@
+# Data Science
+numpy>=1.11.2
+pandas>=1.0.1
+h5py>=2.10.0
+scipy>=1.4.1
+scikit-learn>=0.22.2
+scikit-surprise>=1.1.0
+xgboost>=1.0.1
+statsmodels>=0.11.1
+wordcloud
+impyute 
+fancyimpute
+missingno
+quilt
+imbalanced-learn>=0.6.2
+
+# Deep Learning for GPU
+tensorflow-gpu==2.5.0
+keras==2.4.3
+torch==1.9.0
+torchvision==0.10.0 
+torchaudio==0.9.0 
+
+# Visualization
+matplotlib
+seaborn
+
+# Web scrapping
+beautifulsoup4
+
+# Finance
+finance-datareader
+
+# Publish
+jupyter-book
